@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/themes/themes.dart';
 import '../../../../core/routes/app_routes.dart';
+import '../../../../shared/widgets/widgets.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -15,7 +16,6 @@ class LoginPage extends ConsumerStatefulWidget {
 class _LoginPageState extends ConsumerState<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _isPasswordVisible = false;
 
   @override
   void dispose() {
@@ -82,29 +82,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   // Email Input Field
                   Container(
                     decoration: BoxDecoration(
-                      color: AppColors.surface,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppShadows.sm,
                     ),
-                    child: TextField(
+                    child: AppTextField(
                       controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      style: AppTextStyles.input,
-                      decoration: InputDecoration(
-                        hintText: 'Email address',
-                        hintStyle: AppTextStyles.inputHint,
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: AppColors.textSecondary,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide.none,
-                        ),
-                        filled: true,
-                        fillColor: Colors.transparent,
-                        contentPadding: const EdgeInsets.symmetric(vertical: 20),
-                      ),
+                      type: AppTextFieldType.email,
+                      hint: 'Email address',
+                      prefixIcon: Icons.email_outlined,
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -112,42 +98,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   // Password Input Field
                   Container(
                     decoration: BoxDecoration(
-                      color: AppColors.surface,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppShadows.sm,
                     ),
-                    child: TextField(
+                    child: AppTextField(
                       controller: _passwordController,
-                      obscureText: !_isPasswordVisible,
-                      style: AppTextStyles.input,
-                      decoration: InputDecoration(
-                        hintText: 'Password',
-                        hintStyle: AppTextStyles.inputHint,
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: AppColors.textSecondary,
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _isPasswordVisible
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                            color: AppColors.textSecondary,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _isPasswordVisible = !_isPasswordVisible;
-                            });
-                          },
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide.none,
-                        ),
-                        filled: true,
-                        fillColor: Colors.transparent,
-                        contentPadding: const EdgeInsets.symmetric(vertical: 20),
-                      ),
+                      type: AppTextFieldType.password,
+                      hint: 'Password',
+                      prefixIcon: Icons.lock_outline,
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                   const SizedBox(height: 16),
