@@ -74,24 +74,24 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           // Branch 2: students
           StatefulShellBranch(
             navigatorKey: GlobalKey<NavigatorState>(
-              debugLabel: 'shellTransactions',
+              debugLabel: 'shellStudents',
             ),
             routes: [
               GoRoute(
                 path: AppRoute.students.path,
                 name: AppRoute.students.name,
-                builder: (context, state) => const TransactionsPage(),
+                builder: (context, state) => const StudentsPage(),
               ),
             ],
           ),
           // Branch 3: collect
           StatefulShellBranch(
-            navigatorKey: GlobalKey<NavigatorState>(debugLabel: 'shellProfile'),
+            navigatorKey: GlobalKey<NavigatorState>(debugLabel: 'shellCollect'),
             routes: [
               GoRoute(
                 path: AppRoute.collect.path,
                 name: AppRoute.collect.name,
-                builder: (context, state) => const ProfilePage(),
+                builder: (context, state) => const CollectPage(),
               ),
             ],
           ),
