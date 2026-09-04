@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/page/splash_page.dart';
+import '../../features/auth/page/login_page.dart';
 import 'app_routes.dart';
 
 /// Provider for GoRouter (Riverpod 2.x syntax)
@@ -18,6 +19,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoute.splash.path,
         name: AppRoute.splash.name,
         builder: (context, state) => const SplashPage(),
+      ),
+      GoRoute(
+        path: AppRoute.login.path,
+        name: AppRoute.login.name,
+        builder: (context, state) => const LoginPage(),
       ),
     ],
 
