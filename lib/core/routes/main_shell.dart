@@ -49,7 +49,7 @@ class MainShell extends StatelessWidget {
                   Icons.receipt_long_rounded,
                   color: AppColors.primary,
                 ),
-                label: 'Transactions',
+                label: 'Students',
               ),
               NavigationDestination(
                 icon: Icon(Icons.person_outline_rounded),
@@ -57,7 +57,12 @@ class MainShell extends StatelessWidget {
                   Icons.person_rounded,
                   color: AppColors.primary,
                 ),
-                label: 'Profile',
+                label: 'Collect',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.more_vert_outlined),
+                selectedIcon: Icon(Icons.more_vert, color: AppColors.primary),
+                label: 'More',
               ),
             ],
           ),

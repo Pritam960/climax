@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/auth/page/splash_page.dart';
-import '../../features/auth/page/login_page.dart';
-import '../../features/auth/page/sign_up_page.dart';
 import '../../features/auth/page/forgot_password_page.dart';
+import '../../features/auth/page/login_page.dart';
 import '../../features/auth/page/otp_page.dart';
 import '../../features/auth/page/reset_password_page.dart';
+import '../../features/auth/page/sign_up_page.dart';
+import '../../features/auth/page/splash_page.dart';
+import '../../features/collect/page/collect_page.dart';
 import '../../features/home/page/home_page.dart';
-import '../../features/transactions/page/transactions_page.dart';
-import '../../features/profile/page/profile_page.dart';
-import 'main_shell.dart';
+import '../../features/more/page/more_page.dart' hide HomePage;
+import '../../features/students/page/students_page.dart';
 import 'app_routes.dart';
+import 'main_shell.dart';
 
 /// Provider for GoRouter (Riverpod 2.x syntax)
 /// This allows us to inject auth state or other dependencies into our router later.
@@ -70,25 +71,38 @@ final goRouterProvider = Provider<GoRouter>((ref) {
               ),
             ],
           ),
-          // Branch 2: Transactions
+          // Branch 2: students
           StatefulShellBranch(
-            navigatorKey: GlobalKey<NavigatorState>(debugLabel: 'shellTransactions'),
+            navigatorKey: GlobalKey<NavigatorState>(
+              debugLabel: 'shellTransactions',
+            ),
             routes: [
               GoRoute(
-                path: AppRoute.transactions.path,
-                name: AppRoute.transactions.name,
+                path: AppRoute.students.path,
+                name: AppRoute.students.name,
                 builder: (context, state) => const TransactionsPage(),
               ),
             ],
           ),
-          // Branch 3: Profile
+          // Branch 3: collect
           StatefulShellBranch(
             navigatorKey: GlobalKey<NavigatorState>(debugLabel: 'shellProfile'),
             routes: [
               GoRoute(
-                path: AppRoute.profile.path,
-                name: AppRoute.profile.name,
+                path: AppRoute.collect.path,
+                name: AppRoute.collect.name,
                 builder: (context, state) => const ProfilePage(),
+              ),
+            ],
+          ),
+          // Branch 3: more
+          StatefulShellBranch(
+            navigatorKey: GlobalKey<NavigatorState>(debugLabel: 'shellMore'),
+            routes: [
+              GoRoute(
+                path: AppRoute.more.path,
+                name: AppRoute.more.name,
+                builder: (context, state) => const MorePage(),
               ),
             ],
           ),

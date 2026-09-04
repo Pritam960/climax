@@ -14,14 +14,12 @@ enum AppRoute {
   resetPassword(path: '/reset-password', name: 'resetPassword'),
   themePreview(path: '/theme-preview', name: 'themePreview'),
   home(path: '/home', name: 'home'),
-  transactions(path: '/transactions', name: 'transactions'),
-  profile(path: '/profile', name: 'profile');
+  students(path: '/students', name: 'students'),
+  collect(path: '/collect', name: 'collect'),
+  more(path: '/more', name: 'more');
 
   final String path;
   final String name;
 
-  const AppRoute({
-    required this.path,
-    required this.name,
-  });
+  const AppRoute({required this.path, required this.name});
 }
