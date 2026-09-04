@@ -13,7 +13,9 @@ enum AppRoute {
   otp(path: '/otp', name: 'otp'),
   resetPassword(path: '/reset-password', name: 'resetPassword'),
   themePreview(path: '/theme-preview', name: 'themePreview'),
-  home(path: '/', name: 'home');
+  home(path: '/home', name: 'home'),
+  transactions(path: '/transactions', name: 'transactions'),
+  profile(path: '/profile', name: 'profile');
 
   final String path;
   final String name;
