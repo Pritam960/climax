@@ -59,7 +59,7 @@ class AppLogo extends StatelessWidget {
         if (showText) ...[
           const SizedBox(width: AppSpacing.sm),
           Text(
-            'FeeBook',
+            'FreeBook',
             style: _textStyle.copyWith(
               color: AppColors.primaryDark,
               fontWeight: FontWeight.w800,
