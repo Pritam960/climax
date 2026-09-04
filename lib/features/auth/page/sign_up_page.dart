@@ -6,21 +6,32 @@ import '../../../../core/routes/app_routes.dart';
 import '../../../../core/themes/themes.dart';
 import '../../../../shared/widgets/widgets.dart';
 
-class LoginPage extends ConsumerStatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends ConsumerStatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  ConsumerState<LoginPage> createState() => _LoginPageState();
+  ConsumerState<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends ConsumerState<LoginPage> {
+class _SignUpPageState extends ConsumerState<SignUpPage> {
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.textPrimary),
+          onPressed: () => context.pop(),
+        ),
+      ),
+      extendBodyBehindAppBar: true,
       body: Container(
         decoration: const BoxDecoration(gradient: AppColors.backgroundGradient),
         child: SafeArea(
@@ -34,46 +45,38 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // App Logo with Shadow
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: AppColors.surface,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: AppColors.primary, width: 1),
-                        boxShadow: AppShadows.md,
-                      ),
-                      child: Image.asset(
-                        'assets/images/main_logoo.png',
-                        height: 72,
-                        width: 72,
-                        errorBuilder: (context, error, stackTrace) =>
-                            const Icon(
-                              Icons.local_library_rounded,
-                              size: 72,
-                              color: AppColors.primary,
-                            ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-
-                  // Welcome Headings
+                  // Create Account Headings
                   Text(
-                    'Welcome Back',
-                    style: AppTextStyles.headlineMedium,
+                    'Create Account',
+                    style: AppTextStyles.headlineLarge,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Sign in to continue to FeeBook',
+                    'Join FeeBook to manage easily',
                     style: AppTextStyles.bodyLarge.copyWith(
                       color: AppColors.textSecondary,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 48),
+                  const SizedBox(height: 40),
+
+                  // Name Input Field
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: AppShadows.sm,
+                    ),
+                    child: AppTextField(
+                      controller: _nameController,
+                      type: AppTextFieldType.name,
+                      hint: 'Full Name',
+                      prefixIcon: Icons.person_outline_rounded,
+                      borderRadius: BorderRadius.circular(16),
+                      textCapitalization: TextCapitalization.words,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
 
                   // Email Input Field
                   Container(
@@ -105,31 +108,25 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 20),
 
-                  // Forgot Password
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {
-                        // Handle forgot password
-                      },
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        minimumSize: const Size(50, 3),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      child: Text(
-                        'Forgot Password?',
-                        style: AppTextStyles.labelMedium.copyWith(
-                          color: AppColors.primary,
-                        ),
-                      ),
+                  // Confirm Password Input Field
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: AppShadows.sm,
+                    ),
+                    child: AppTextField(
+                      controller: _confirmPasswordController,
+                      type: AppTextFieldType.password,
+                      hint: 'Confirm Password',
+                      prefixIcon: Icons.lock_reset_outlined,
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 40),
 
-                  // Sign In Button
+                  // Sign Up Button
                   Container(
                     decoration: BoxDecoration(
                       gradient: AppColors.primaryGradient,
@@ -138,8 +135,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        // TODO: Implement actual auth logic
-                        // For now, redirecting to home
+                        // TODO: Implement actual signup logic
                         context.goNamed(AppRoute.home.name);
                       },
                       style: ElevatedButton.styleFrom(
@@ -151,32 +147,32 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         ),
                       ),
                       child: Text(
-                        'Sign In',
+                        'Sign Up',
                         style: AppTextStyles.button.copyWith(fontSize: 16),
                       ),
                     ),
                   ),
                   const SizedBox(height: 32),
 
-                  // Sign Up Link
+                  // Sign In Link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have an account? ",
+                        "Already have an account? ",
                         style: AppTextStyles.bodyMedium.copyWith(
                           color: AppColors.textSecondary,
                         ),
                       ),
                       GestureDetector(
                         onTap: () {
-                          // Navigate to Sign Up
-                          context.pushNamed(AppRoute.signup.name);
+                          // Navigate back to Login
+                          context.pop();
                         },
                         child: Text(
-                          'Sign Up',
+                          'Sign In',
                           style: AppTextStyles.labelLarge.copyWith(
-                            color: AppColors.accent,
+                            color: AppColors.primary,
                           ),
                         ),
                       ),
@@ -193,8 +189,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   void dispose() {
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 }
