@@ -10,6 +10,7 @@ enum AppRoute {
   login(path: '/login', name: 'login'),
   signup(path: '/signup', name: 'signup'),
   forgotPassword(path: '/forgot-password', name: 'forgotPassword'),
+  otp(path: '/otp', name: 'otp'),
   themePreview(path: '/theme-preview', name: 'themePreview'),
   home(path: '/', name: 'home');
 

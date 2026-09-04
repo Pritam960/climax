@@ -1,3 +1,4 @@
+import 'package:climax_app/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,10 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.textPrimary),
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: AppColors.textPrimary,
+          ),
           onPressed: () => context.pop(),
         ),
       ),
@@ -95,7 +99,9 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                           ),
                         );
                         Future.delayed(const Duration(seconds: 2), () {
-                          if (mounted) context.pop();
+                          if (mounted) {
+                            context.pushNamed(AppRoute.otp.name);
+                          }
                         });
                       },
                       style: ElevatedButton.styleFrom(
@@ -107,14 +113,14 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                         ),
                       ),
                       child: Text(
-                        'Send Reset Link',
+                        'Send OTP',
                         style: AppTextStyles.button.copyWith(fontSize: 16),
                       ),
                     ),
                   ),
-                  
+
                   const SizedBox(height: 32),
-                  
+
                   // Remember Password Link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

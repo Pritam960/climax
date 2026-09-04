@@ -21,19 +21,13 @@ class AppKeyboardDismissible extends StatelessWidget {
       behavior: HitTestBehavior.translucent,
       onTap: () {
         // Kisi bhi jagah tap hone par primary focus ko hataye
-        final currentFocus = FocusManager.instance.primaryFocus;
-        if (currentFocus != null && !currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
+        FocusManager.instance.primaryFocus?.unfocus();
       },
       child: NotificationListener<ScrollNotification>(
         onNotification: (scrollNotification) {
           // Jaise hi koi bhi scroll start ho, keyboard hide kar do
           if (scrollNotification is ScrollStartNotification) {
-            final currentFocus = FocusManager.instance.primaryFocus;
-            if (currentFocus != null && !currentFocus.hasPrimaryFocus) {
-              currentFocus.unfocus();
-            }
+            FocusManager.instance.primaryFocus?.unfocus();
           }
           // false return karna zaroori hai taaki scroll event ruk na jaye
           return false;
