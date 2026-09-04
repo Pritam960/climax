@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:climax_app/core/themes/themes.dart';
 import 'package:climax_app/core/routes/app_router.dart';
 
+import 'package:climax_app/shared/widgets/widgets.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // Wrapped MyApp in ProviderScope to enable Riverpod
@@ -26,6 +28,13 @@ class MyApp extends ConsumerWidget {
       theme: AppTheme.light,
       themeMode: ThemeMode.light,
       routerConfig: goRouter,
+      builder: (context, child) {
+        // Applying AppKeyboardDismissible globally so that keyboard 
+        // hides automatically on tap/scroll anywhere in the app.
+        return AppKeyboardDismissible(
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
     );
   }
 }
