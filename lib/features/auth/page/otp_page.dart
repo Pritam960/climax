@@ -1,3 +1,4 @@
+import 'package:climax_app/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -117,8 +118,7 @@ class _OtpPageState extends ConsumerState<OtpPage> {
                   child: ElevatedButton(
                     onPressed: _isVerifyEnabled
                         ? () {
-                            // TODO: Implement actual OTP verification logic
-                            // context.goNamed(AppRoute.home.name);
+                            context.pushNamed(AppRoute.resetPassword.name);
                           }
                         : null,
                     style: ElevatedButton.styleFrom(

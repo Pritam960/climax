@@ -7,6 +7,7 @@ import '../../features/auth/page/login_page.dart';
 import '../../features/auth/page/sign_up_page.dart';
 import '../../features/auth/page/forgot_password_page.dart';
 import '../../features/auth/page/otp_page.dart';
+import '../../features/auth/page/reset_password_page.dart';
 import 'app_routes.dart';
 
 /// Provider for GoRouter (Riverpod 2.x syntax)
@@ -42,6 +43,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoute.otp.path,
         name: AppRoute.otp.name,
         builder: (context, state) => const OtpPage(),
+      ),
+      GoRoute(
+        path: AppRoute.resetPassword.path,
+        name: AppRoute.resetPassword.name,
+        builder: (context, state) => const ResetPasswordPage(),
       ),
     ],
 
