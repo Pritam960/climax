@@ -61,7 +61,7 @@ export 'app_divider.dart';
 export 'app_empty_state.dart';
 export 'app_snackbar.dart';
 export 'app_dialog.dart';
-export 'app_logo.dart';
+
 export 'app_shimmer.dart';
 export 'app_text.dart';
 export 'app_tooltip.dart';

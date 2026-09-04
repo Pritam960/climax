@@ -20,7 +20,7 @@ class MyApp extends ConsumerWidget {
 
     // Use MaterialApp.router for GoRouter integration
     return MaterialApp.router(
-      title: 'FreeBook',
+      title: 'FeeBook',
       debugShowCheckedModeBanner: false,
       // Light theme only — psychology-based blue palette
       theme: AppTheme.light,
