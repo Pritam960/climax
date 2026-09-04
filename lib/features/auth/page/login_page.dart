@@ -112,7 +112,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {
-                        // Handle forgot password
+                        context.pushNamed(AppRoute.forgotPassword.name);
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,

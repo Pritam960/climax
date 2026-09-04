@@ -9,6 +9,7 @@ enum AppRoute {
   splash(path: '/splash', name: 'splash'),
   login(path: '/login', name: 'login'),
   signup(path: '/signup', name: 'signup'),
+  forgotPassword(path: '/forgot-password', name: 'forgotPassword'),
   themePreview(path: '/theme-preview', name: 'themePreview'),
   home(path: '/', name: 'home');
 

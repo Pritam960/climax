@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/page/splash_page.dart';
 import '../../features/auth/page/login_page.dart';
 import '../../features/auth/page/sign_up_page.dart';
+import '../../features/auth/page/forgot_password_page.dart';
 import 'app_routes.dart';
 
 /// Provider for GoRouter (Riverpod 2.x syntax)
@@ -30,6 +31,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoute.signup.path,
         name: AppRoute.signup.name,
         builder: (context, state) => const SignUpPage(),
+      ),
+      GoRoute(
+        path: AppRoute.forgotPassword.path,
+        name: AppRoute.forgotPassword.name,
+        builder: (context, state) => const ForgotPasswordPage(),
       ),
     ],
 
