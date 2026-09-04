@@ -45,18 +45,25 @@ class AppLogo extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
-          Icons.auto_awesome_rounded, // Temporary logo icon
-          color: AppColors.primary,
-          size: _iconSize,
+        Image.asset(
+          'assets/images/main_logo.png',
+          width: _iconSize,
+          height: _iconSize,
+          // Optional: handle error if the image isn't placed yet
+          errorBuilder: (context, error, stackTrace) => Icon(
+            Icons.image_not_supported_rounded,
+            color: AppColors.primary,
+            size: _iconSize,
+          ),
         ),
         if (showText) ...[
           const SizedBox(width: AppSpacing.sm),
           Text(
-            'Climax',
+            'FeeBook',
             style: _textStyle.copyWith(
               color: AppColors.primaryDark,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w800,
+              letterSpacing: -0.5,
             ),
           ),
         ],

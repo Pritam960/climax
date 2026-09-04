@@ -1,4 +1,5 @@
 import 'package:climax_app/core/themes/themes.dart';
+import 'package:climax_app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -42,10 +43,9 @@ class _SplashPageState extends ConsumerState<SplashPage>
                             .primaryContainer, // Soft blue background for icon
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(
-                        Icons.auto_awesome_rounded,
-                        size: 80,
-                        color: AppColors.primary, // Primary blue icon
+                      child: const AppLogo(
+                        size: AppLogoSize.xl,
+                        showText: false,
                       ),
                     ),
                   ),
