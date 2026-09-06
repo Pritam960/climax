@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/themes/themes.dart';
 import '../../../../shared/widgets/widgets.dart';
+import '../data/home_repository.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stats = ref.watch(dashboardStatsProvider);
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppHeader(
@@ -24,7 +28,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildDashboardStats(),
+              _buildDashboardStats(stats),
               const SizedBox(height: 32),
               // You can add more sections here below the dashboard
               Text(
@@ -67,7 +71,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildDashboardStats() {
+  Widget _buildDashboardStats(DashboardStats stats) {
     return Container(
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 255, 255, 255),
@@ -84,7 +88,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: _buildStatItem(
                   title: 'Collected',
-                  value: '₹1,24,500',
+                  value: '₹${stats.collectedAmount}',
                   icon: Icons.account_balance_wallet_rounded,
                   iconColor: AppColors.success,
                   isTopLeft: true,
@@ -94,7 +98,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: _buildStatItem(
                   title: 'Pending',
-                  value: '₹32,000',
+                  value: '₹${stats.pendingAmount}',
                   icon: Icons.pending_actions_rounded,
                   iconColor: AppColors.warning,
                   isTopRight: true,
@@ -110,7 +114,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: _buildStatItem(
                   title: 'Today',
-                  value: '₹8,500',
+                  value: '₹${stats.todayCollected}',
                   icon: Icons.trending_up_rounded,
                   iconColor: AppColors.primary,
                   isBottomLeft: true,
@@ -120,7 +124,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: _buildStatItem(
                   title: 'Students',
-                  value: '48',
+                  value: '${stats.totalStudents}',
                   icon: Icons.people_alt_rounded,
                   iconColor: AppColors.textSecondary,
                   isBottomRight: true,
